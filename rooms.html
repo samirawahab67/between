@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rooms · BETWEEN Dahab</title><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="theme-color" content="#0F3853">
+<meta name="description" content="The rooms at BETWEEN, a boutique house in Dahab between the mountains and the sea. Five rooms, one familiar feeling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Sansita+Swashed:wght@400;500;600&display=swap">
+<style>
+/* Layout concept: the house's own room register. Each room is a magazine spread with a brass key tag; opening one turns the page into its full entry and a request card. */
+:root{
+  --blue:#1F3B52; --sand:#ECE1CC; --ink:#211A13; --glass:#7FA394; --brass:#AB8A52;
+  --ivory:#F7F0E3; --paper:#F2E8D5; --line:rgba(31,59,82,.2); --burgundy:#901726;
+  --display:"Sansita Swashed", Georgia, serif;
+  --body:"Outfit", "Helvetica Neue", Arial, sans-serif;
+  --gutter:max(20px, 4.5vw);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;font-weight:300;overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.02;margin:0;text-wrap:balance;color:var(--blue)}
+p{margin:0}
+em{font-family:var(--display);font-style:italic;font-weight:400}
+.wrap{padding-left:max(var(--gutter), env(safe-area-inset-left,0px));padding-right:max(var(--gutter), env(safe-area-inset-right,0px))}
+.eyebrow{font-size:12px;font-weight:500;letter-spacing:.32em;text-transform:uppercase}
+:focus-visible{outline:2px dashed var(--brass);outline-offset:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;left:16px;top:-60px;z-index:200;background:var(--blue);color:var(--ivory);padding:10px 16px;text-decoration:none}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+.mask{background:currentColor;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.logo-symbol{--m:url(assets/logo/symbol.png);aspect-ratio:1}
+.logo-h{--m:url(assets/logo/horizontal.png);aspect-ratio:1300/359}
+body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:150;opacity:.08;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.15 0 0 0 0 0.1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1.2s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+
+/* header */
+.bar{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;align-items:center;gap:24px;
+  padding:calc(14px + env(safe-area-inset-top,0px)) max(var(--gutter), env(safe-area-inset-right,0px)) 14px max(var(--gutter), env(safe-area-inset-left,0px));
+  color:var(--ivory);transition:background .5s,color .5s,padding .4s}
+.bar.solid{background:rgba(247,240,227,.95);color:var(--blue);padding-top:calc(8px + env(safe-area-inset-top,0px));padding-bottom:8px;box-shadow:0 1px 0 var(--line)}
+.bar .brand .logo-h{width:150px;display:block}
+.bar nav{margin-left:auto}
+.bar nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0}
+.bar nav a{text-decoration:none;font-size:13px;letter-spacing:.22em;text-transform:uppercase;padding:6px 0;border-bottom:1px solid transparent}
+.bar nav a:hover,.bar nav a[aria-current="page"]{border-bottom-color:currentColor}
+.menu{display:none;margin-left:auto;background:none;border:1px solid currentColor;color:inherit;font:inherit;font-size:12px;letter-spacing:.24em;text-transform:uppercase;padding:8px 14px;cursor:pointer}
+@media (max-width:1100px){.bar nav{display:none}.menu{display:block}.bar nav.open{display:block;position:absolute;top:100%;left:0;right:0;background:var(--ivory);color:var(--blue);padding:14px var(--gutter) 22px;box-shadow:0 12px 30px rgba(0,0,0,.15)}.bar nav.open ul{flex-direction:column;gap:6px}}
+
+/* hero */
+.hero{position:relative;min-height:min(100svh,980px);display:grid;align-items:end;color:var(--ivory);overflow:hidden;isolation:isolate}
+.hero .bg{position:absolute;inset:-5% 0;z-index:-2;background:url(assets/img/rooms/bedroom.webp) center 55%/cover;transform:translateY(var(--py,0px)) scale(1.05);animation:breathe 30s ease-in-out infinite alternate}
+@keyframes breathe{to{transform:translateY(var(--py,0px)) scale(1.12)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(31,59,82,.45),rgba(31,59,82,0) 38%,rgba(33,26,19,.15) 60%,rgba(33,26,19,.78))}
+.hero .inner{padding-block:150px 70px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:40px;align-items:end}
+.hero .k{color:var(--sand)}
+.hero h1{color:var(--ivory);font-size:clamp(50px,8vw,128px);margin-top:18px}
+.hero .side{display:flex;flex-direction:column;gap:22px;justify-self:end;max-width:340px}
+.hero .side p{font-family:var(--display);font-size:26px;line-height:1.2}
+.hero .cta{display:inline-flex;align-items:center;gap:14px;text-decoration:none;font-size:12.5px;letter-spacing:.3em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:6px;align-self:flex-start}
+.hero .cap{position:absolute;right:max(var(--gutter),env(safe-area-inset-right,0px));top:120px;font-family:var(--display);font-size:18px;transform:rotate(-3deg);opacity:.9}
+@media (max-width:860px){.hero .inner{grid-template-columns:1fr}.hero .side{justify-self:start}.hero .cap{display:none}}
+
+/* intro */
+.intro{padding-block:120px 70px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:min(6vw,90px);align-items:start}
+.intro h2{font-size:clamp(40px,5vw,78px)}
+.intro h2 span{color:var(--brass)}
+.intro .r p{max-width:46ch}
+.intro .r p+p{margin-top:18px}
+.title-block{display:flex;flex-direction:column;gap:14px}
+.title-block .page{font-family:var(--body);font-weight:500;font-size:13px;letter-spacing:.42em;color:var(--blue)}
+.note-tbc{margin-top:26px;padding:14px 16px;border-left:3px solid var(--brass);background:rgba(171,138,82,.1);font-size:14px}
+@media (max-width:860px){.intro{grid-template-columns:1fr}}
+
+/* register strip */
+.register{display:flex;gap:12px;overflow-x:auto;padding-bottom:10px;scrollbar-width:thin}
+.register a{flex:1 0 180px;display:flex;flex-direction:column;gap:6px;text-decoration:none;padding:16px 16px 14px;border:1.5px solid var(--line);background:var(--paper);transition:border-color .3s,transform .3s}
+.register a:hover,.register a:focus-visible{border-color:var(--blue);transform:translateY(-4px)}
+.register .n{font-size:11px;letter-spacing:.3em;font-weight:500;color:var(--brass)}
+.register em{font-size:22px;color:var(--blue)}
+.register span:last-child{font-size:13px;opacity:.75}
+
+/* the spreads */
+.spread{padding-block:110px;border-top:1px solid var(--line);position:relative}
+.spread .g{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:min(5vw,80px);align-items:center}
+.spread.flip .g{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr)}
+.spread.flip .pics{order:2}
+.pics{position:relative}
+.pics .main{position:relative;aspect-ratio:3/2;overflow:hidden;border:0;padding:0;background:#ddd;cursor:pointer;width:100%;display:block}
+.pics .main img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.6s cubic-bezier(.2,.7,.2,1),opacity 1s}
+.pics .main img.b{opacity:0}
+.pics .main:hover img.a,.pics .main:focus-visible img.a{transform:scale(1.05)}
+.pics .main:hover img.b,.pics .main:focus-visible img.b{opacity:1;transform:scale(1.03)}
+.pics .main .view{position:absolute;left:18px;bottom:18px;background:rgba(247,240,227,.94);color:var(--blue);font-size:11.5px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;padding:10px 14px;transform:translateY(8px);opacity:0;transition:.4s}
+.pics .main:hover .view,.pics .main:focus-visible .view{opacity:1;transform:none}
+.pics .small{position:absolute;width:34%;aspect-ratio:4/5;right:-4%;bottom:-14%;border:10px solid var(--ivory);box-shadow:0 20px 40px rgba(33,26,19,.18);overflow:hidden}
+.flip .pics .small{right:auto;left:-4%}
+.pics .small img{width:100%;height:100%;object-fit:cover}
+.pics .caption{position:absolute;left:0;top:calc(100% + 16px);font-family:var(--display);font-style:italic;font-size:17px;color:var(--brass);max-width:56%}
+.flip .pics .caption{left:auto;right:0;text-align:right}
+.tag{position:relative;display:inline-flex;align-items:center;gap:12px;background:var(--brass);color:var(--ivory);padding:8px 18px 8px 26px;clip-path:polygon(14px 0,100% 0,100% 100%,14px 100%,0 50%);font-size:11.5px;font-weight:500;letter-spacing:.3em}
+.tag::before{content:"";position:absolute;left:10px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--ivory)}
+.txt h2{font-size:clamp(44px,5vw,80px);margin-top:20px}
+.txt .feel{margin-top:16px;font-family:var(--display);font-style:italic;font-size:clamp(20px,1.8vw,24px);color:var(--ink);line-height:1.35}
+.specs{margin:26px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 18px;font-size:15px;border-top:1px solid var(--line)}
+.specs dt,.specs dd{padding:9px 0;border-bottom:1px solid var(--line);margin:0}
+.specs dt{font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);padding-top:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:12.5px;padding:3px 9px;border:1px solid var(--line);border-radius:999px;background:var(--paper)}
+.ph-note{font-size:12px;color:var(--burgundy);margin-top:10px;letter-spacing:.04em}
+.acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{font:inherit;font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;padding:14px 20px;border:1.5px solid var(--blue);background:var(--blue);color:var(--ivory);cursor:pointer;transition:background .3s,color .3s;text-decoration:none;display:inline-block}
+.btn:hover{background:transparent;color:var(--blue)}
+.btn.ghost{background:transparent;color:var(--blue)}
+.btn.ghost:hover{background:var(--blue);color:var(--ivory)}
+@media (max-width:900px){.spread{padding-block:80px}.spread .g,.spread.flip .g{grid-template-columns:1fr}.spread.flip .pics{order:0}.pics{margin-bottom:70px}.pics .small{width:40%}}
+
+[hidden]{display:none!important}
+/* search + compare */
+.search{padding-bottom:40px}
+.sbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:18px 24px;align-items:end;background:var(--paper);padding:22px clamp(18px,3vw,30px);border-top:3px solid var(--blue)}
+.sres{margin-top:14px;font-size:15px;min-height:1.4em}
+.spread.fit .tag{background:var(--glass)}
+.spread.nofit{opacity:.45}
+.cmpck{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.cmpck input{width:18px;height:18px;accent-color:var(--blue)}
+.avail{display:inline-block;margin-top:14px;font-size:13px;padding:4px 10px;border:1px dashed var(--blue)}
+.compare{padding-block:90px;border-top:1px solid var(--line)}
+.cmp-head{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:24px}
+.cmp-head h2{font-size:clamp(34px,4vw,56px)}
+.cmp-scroll{overflow-x:auto}
+.compare table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+.compare th,.compare td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.compare thead th{font-family:var(--display);font-weight:500;font-size:24px;color:var(--blue)}
+.compare tbody th{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;color:var(--blue);width:140px}
+.compare td img{width:100%;max-width:240px;aspect-ratio:3/2;object-fit:cover}
+.cmp-bar{position:fixed;z-index:80;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:16px;background:var(--blue);color:var(--ivory);padding:8px 8px 8px 20px;box-shadow:0 14px 30px rgba(0,0,0,.25);font-size:14px;white-space:nowrap}
+.cmp-bar .btn{background:var(--ivory);color:var(--blue);border-color:var(--ivory);padding:10px 16px}
+@media (max-width:820px){.sbar{grid-template-columns:1fr 1fr}.sbar .btn{grid-column:1/-1}}
+@media (max-width:460px){.sbar{grid-template-columns:1fr}}
+
+/* note about your stay */
+.stay-note{position:relative;color:var(--ivory);overflow:hidden;isolation:isolate;padding-block:130px}
+.stay-note .bg{position:absolute;inset:0;z-index:-2;background:url(assets/img/rooms/night.webp) center/cover}
+.stay-note::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(31,59,82,.82)}
+.stay-note .g{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:min(6vw,90px);align-items:start}
+.stay-note h2{color:var(--ivory);font-size:clamp(38px,4.6vw,70px)}
+.letter{background:var(--paper);color:var(--ink);padding:36px clamp(22px,3.5vw,48px) 34px;box-shadow:0 30px 60px rgba(0,0,0,.35);transform:rotate(-1deg);
+  background-image:repeating-linear-gradient(180deg,transparent 0 35px,rgba(31,59,82,.1) 35px 36px)}
+.letter p{font-family:var(--display);font-size:clamp(19px,1.6vw,22px);line-height:36px}
+.letter .sig{margin-top:18px;color:var(--brass)}
+.letter ul{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 24px;font-size:14.5px}
+.letter li b{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;color:var(--blue)}
+.exp-link{display:flex;align-items:center;gap:22px;margin-top:40px;padding:20px 22px;border:1px solid rgba(247,240,227,.4);text-decoration:none;transition:background .3s}
+.exp-link:hover{background:rgba(247,240,227,.08)}
+.exp-link img{width:110px;aspect-ratio:1;object-fit:cover}
+.exp-link em{font-size:26px;display:block;color:var(--sand)}
+@media (max-width:900px){.stay-note .g{grid-template-columns:1fr}.letter ul{grid-template-columns:1fr}}
+
+footer{background:var(--ink);color:var(--sand);padding-block:50px}
+footer .row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:13px}
+footer .logo-h{width:180px;display:block}
+
+/* room entry (detail) */
+dialog.entry{border:0;padding:0;margin:0;width:100vw;height:100dvh;max-width:none;max-height:none;background:var(--ivory);color:var(--ink);overflow:auto}
+dialog.entry::backdrop{background:rgba(31,59,82,.75)}
+dialog.entry[open]{animation:fadeup .6s cubic-bezier(.2,.7,.2,1)}
+@keyframes fadeup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.e-close{position:fixed;z-index:5;top:calc(16px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));font:inherit;font-size:12px;letter-spacing:.26em;text-transform:uppercase;border:1.5px solid var(--ivory);background:rgba(31,59,82,.6);color:var(--ivory);padding:10px 16px;cursor:pointer}
+.e-hero{position:relative;height:min(78svh,760px);overflow:hidden;background:#111}
+.e-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease,transform 5s ease;transform:scale(1.04)}
+.e-hero img.on{opacity:1;transform:scale(1)}
+.e-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(33,26,19,.7))}
+.e-hero .t{position:absolute;left:max(var(--gutter),env(safe-area-inset-left,0px));bottom:34px;z-index:2;color:var(--ivory)}
+.e-hero h2{color:var(--ivory);font-size:clamp(46px,6vw,96px);margin-top:14px}
+.thumbs{display:flex;gap:10px;margin-top:-46px;position:relative;z-index:3;justify-content:flex-end}
+.thumbs button{width:clamp(70px,9vw,120px);aspect-ratio:4/3;padding:0;border:4px solid var(--ivory);cursor:pointer;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.25);background:#ddd}
+.thumbs button img{width:100%;height:100%;object-fit:cover;filter:saturate(.7)}
+.thumbs button[aria-current="true"]{border-color:var(--brass)}
+.thumbs button[aria-current="true"] img{filter:none}
+.e-body{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:min(6vw,80px);padding-block:50px 90px;align-items:start}
+.e-body .feel{font-family:var(--display);font-style:italic;font-size:clamp(22px,2vw,28px);line-height:1.35}
+.e-body .desc{margin-top:18px;max-width:52ch}
+.e-body .cap2{margin-top:24px;font-family:var(--display);font-size:18px;color:var(--brass)}
+.card{position:sticky;top:30px;background:#fffaf0;padding:28px clamp(18px,3vw,32px) 30px;box-shadow:0 24px 50px rgba(33,26,19,.14);border-top:4px solid var(--brass)}
+.card h3{font-size:30px}
+.price{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:10px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.price b{font-family:var(--display);font-weight:500;font-size:28px;color:var(--blue)}
+.price small{font-size:12px;color:var(--burgundy)}
+.fg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px;margin-top:18px}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.f.full{grid-column:1/-1}
+.f label{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;color:var(--blue)}
+.f input,.f textarea{font:inherit;font-size:16.5px;color:var(--ink);background:transparent;border:0;border-bottom:1.5px solid var(--blue);padding:8px 2px;border-radius:0;width:100%;min-width:0}
+.f textarea{border:1.5px solid var(--line);padding:10px;min-height:70px;resize:vertical}
+.f input:focus,.f textarea:focus{outline:none;border-color:var(--brass);background:rgba(171,138,82,.07)}
+.step{display:flex;align-items:center;gap:14px;border-bottom:1.5px solid var(--blue);padding:4px 0}
+.step button{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--blue);background:none;color:var(--blue);font-size:18px;cursor:pointer}
+.step button:disabled{opacity:.3;cursor:default}
+.step output{font-family:var(--display);font-size:22px;min-width:4.5ch;text-align:center}
+.err{color:var(--burgundy);font-size:12.5px;min-height:1.1em}
+.sum{margin-top:10px;font-size:14.5px;display:flex;justify-content:space-between;gap:10px;font-variant-numeric:tabular-nums}
+.done{text-align:center;padding:16px 4px}
+.done .seal{width:90px;margin:0 auto;color:var(--blue)}
+.done h4{font-family:var(--display);font-weight:500;font-size:28px;margin:16px 0 0;line-height:1.1;color:var(--blue)}
+.small{font-size:12.5px;opacity:.75;margin-top:12px}
+@media (max-width:900px){.e-body{grid-template-columns:1fr}.card{position:static}.thumbs{justify-content:flex-start;margin-top:12px;overflow-x:auto;padding-bottom:6px}.thumbs button{flex:none}}
+@media (max-width:520px){.fg{grid-template-columns:1fr}}
+
+html.js .rv{transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.2,.7,.2,1)}
+html.js .rv:not(.in){opacity:.25;transform:translateY(20px)}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html.js .rv:not(.in){opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#collection">Skip to the rooms</a>
+
+<header class="bar" id="bar">
+  <a class="brand" href="index.html" aria-label="BETWEEN, back to the house"><span class="logo-h mask"></span></a>
+  <button class="menu" type="button" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav aria-label="Main" id="nav">
+    <ul>
+      <li><a href="index.html#house">The House</a></li>
+      <li><a href="index.html#rooms">The Spaces</a></li>
+      <li><a href="rooms.html" aria-current="page">Rooms</a></li>
+      <li><a href="experiences.html">Experiences</a></li>
+      <li><a href="camera.html">The Camera</a></li>
+      <li><a href="index.html#archive">Archive</a></li>
+      <li><a href="index.html#stay">Stay</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="bg" id="heroBg" role="img" aria-label="A sunlit bedroom at BETWEEN, white linen, woven lamps and bougainvillea at the window"></div>
+    <p class="cap" aria-hidden="true">the light comes in at seven</p>
+    <div class="inner wrap">
+      <div>
+        <p class="eyebrow k">Accommodation · Dahab, South Sinai</p>
+        <h1 id="hero-h">Your Place Between.</h1>
+      </div>
+      <div class="side">
+        <p>A space to slow down, settle in, and feel at home.</p>
+        <a class="cta" href="#search">Find your room <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro wrap rv" aria-labelledby="intro-h">
+    <div class="title-block">
+      <p class="page">THE ROOMS</p>
+      <h2 id="intro-h">Some rooms feel familiar <span>from the moment you arrive.</span></h2>
+    </div>
+    <div class="r">
+      <p>Four rooms to stay in, each with its own light and its own view. Every guest shares the five spaces of the house: the Parlour, the Kitchen Table, the Sitting Room, the Balcony and the Study. <a href="index.html#rooms">Walk through the house →</a></p>
+      <p class="note-tbc"><b>Placeholder information.</b> Room names, sizes, beds and rates below are placeholders until the hotel confirms its room inventory. No live availability is shown: every request is checked and confirmed by the house.</p>
+    </div>
+  </section>
+
+  <section class="search wrap rv" id="search" aria-labelledby="search-h">
+    <h2 id="search-h" class="sr">Check your dates</h2>
+    <form class="sbar" id="sbar" novalidate>
+      <div class="f"><label for="s-arr">Check-in</label><input type="date" id="s-arr"><span class="err" id="se-arr"></span></div>
+      <div class="f"><label for="s-dep">Check-out</label><input type="date" id="s-dep"><span class="err" id="se-dep"></span></div>
+      <div class="f"><label id="s-gl">Guests</label><div class="step" role="group" aria-labelledby="s-gl"><button type="button" id="s-gm" aria-label="One guest fewer">−</button><output id="s-go" aria-live="polite">2 guests</output><button type="button" id="s-gp" aria-label="One guest more">+</button></div></div>
+      <button class="btn" type="submit">Check availability</button>
+    </form>
+    <p class="sres" id="sres" aria-live="polite"></p>
+  </section>
+
+  <nav class="wrap rv" aria-label="Room types" style="padding-bottom:40px"><div class="register" id="register"></div></nav>
+
+  <div id="collection"></div>
+  <section class="compare wrap" id="compare" aria-labelledby="cmp-h" hidden>
+    <div class="cmp-head"><h2 id="cmp-h">Compare rooms</h2><button type="button" class="btn ghost" id="cmp-clear">Clear</button></div>
+    <div class="cmp-scroll"><table id="cmp-table"></table></div>
+  </section>
+  <div class="cmp-bar" id="cmpbar" hidden><span id="cmp-count"></span><a class="btn" href="#compare">Compare</a></div>
+
+  <section class="stay-note" aria-labelledby="note-h">
+    <div class="bg" role="img" aria-label="BETWEEN at night, lit windows behind the palms"></div>
+    <div class="wrap g">
+      <div class="rv">
+        <p class="eyebrow" style="color:var(--sand)">A note about your stay</p>
+        <h2 id="note-h" style="margin-top:18px">Stay a little longer.</h2>
+        <a class="exp-link" href="experiences.html"><img src="assets/img/exp/camel-1.webp" alt="" loading="lazy"><span><span class="eyebrow">Beyond the stay</span><em>Discover Dahab with us</em><span style="font-size:14px;opacity:.85">Diving, camels, mountain nights and more →</span></span></a>
+      </div>
+      <div class="letter rv">
+        <p>Dear guest,</p>
+        <p>There are no key cards here and no screens in the rooms. You will be given a brass key, a quiet bed and a window that opens onto the sea. If you need the world, the Study is downstairs. Otherwise, take your time. The house is in no hurry.</p>
+        <p class="sig">— the Parlour</p>
+        <ul>
+          <li><b>Check-in</b>From 14:00, with a key</li>
+          <li><b>Check-out</b>Usually 12:00, ask us for more time</li>
+          <li><b>Breakfast</b>At the Kitchen Table, served late</li>
+          <li><b>Wi-Fi</b>In the Study and shared spaces</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap row"><span class="logo-h mask" role="img" aria-label="BETWEEN"></span><span>Dahab, South Sinai · <a href="index.html">Back to the house</a></span></div>
+</footer>
+
+<dialog class="entry" id="entry" aria-labelledby="e-title">
+  <button type="button" class="e-close" id="eclose">Close</button>
+  <div class="e-hero" id="ehero"><div class="t"><span class="tag" id="e-tag"></span><h2 id="e-title"></h2></div></div>
+  <div class="thumbs wrap" id="ethumbs"></div>
+  <div class="wrap e-body">
+    <div>
+      <p class="feel" id="e-feel"></p>
+      <p class="desc" id="e-desc"></p>
+      <dl class="specs" id="e-specs"></dl>
+      <p class="ph-note">Room details are placeholders until confirmed by the hotel.</p>
+      <dl class="specs" style="margin-top:20px"><dt>Check-in</dt><dd>From 14:00, with a brass key at the Parlour</dd><dt>Check-out</dt><dd>Until 12:00 (later on request)</dd></dl>
+      <p class="cap2" id="e-cap"></p>
+    </div>
+    <div class="card" id="ecard"></div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var I=function(n){return 'assets/img/rooms/'+n+'.webp'};
+
+  /* PLACEHOLDER room inventory, taken from the house's booking form. Replace with the hotel's confirmed room types, specs and rates. */
+  var ROOMS=[
+    {id:'sea',no:'01',name:'The Sea Room',type:'Sea View Double',guests:2,beds:'One king bed',size:'34 m² + balcony',rate:4200,
+     feel:'Wake up to the Gulf, fall asleep to the waves.',
+     desc:'An east-facing room on the upper floor with a private balcony over the beach, palm shade and linen curtains moving in the afternoon wind.',
+     amen:['Private balcony','Sea view','Rain shower','Air conditioning','Outdoor seating'],
+     imgs:['oceanview','balcony','curtains','terrace','bath'],cap:'the curtains never stay still here'},
+    {id:'mountain',no:'02',name:'The Mountain Room',type:'Double Room',guests:2,beds:'One king bed',size:'30 m²',rate:3600,
+     feel:'Shutters open onto the Sinai range.',
+     desc:'A calm, sunlit double with carved window screens, woven lamps and a reading nook. Quiet mornings, copper mountains at sunset.',
+     amen:['Mountain view','Reading nook','Rain shower','Air conditioning','Work desk'],
+     imgs:['bedroom','geometric','nook','bath'],cap:'the light comes in at seven'},
+    {id:'bougainvillea',no:'03',name:'The Bougainvillea Room',type:'Garden Triple',guests:3,beds:'One king bed and one single',size:'36 m²',rate:3900,
+     feel:'Ground floor, a few steps from the courtyard.',
+     desc:'A room on the courtyard level with a long cushioned majlis, family photographs and a low brass table for tea under the palms.',
+     amen:['Courtyard access','Majlis seating','Rain shower','Air conditioning','Tea tray'],
+     imgs:['majlis','courtyard','chandelier','bath'],cap:'a long seat, made for staying up late'},
+    {id:'long',no:'04',name:'The Long Room',type:'Family Suite',guests:5,beds:'One king bed and three singles in two bedrooms',size:'58 m²',rate:6400,
+     feel:'Two bedrooms and a table for everyone.',
+     desc:'A family suite with two bedrooms, a lounge with rattan armchairs and warm lit niches, and its own kitchenette and dining table.',
+     amen:['Two bedrooms','Lounge','Kitchenette','Dining table','Air conditioning'],
+     imgs:['lounge','kitchen','niches','corridor','saltbrick'],cap:'the table is always set for one more'}
+  ];
+  var fmt=function(n){return n.toLocaleString('en-US')};
+  function $(id){return document.getElementById(id)}
+  function iso(d){return d.toISOString().slice(0,10)}
+
+  /* register strip + spreads */
+  var reg=document.getElementById('register'), col=document.getElementById('collection');
+  ROOMS.forEach(function(r,i){
+    reg.insertAdjacentHTML('beforeend','<a href="#room-'+r.id+'"><span class="n">ROOM No. '+r.no+'</span><em>'+r.name+'</em><span>'+r.type+' · '+r.guests+' guests</span></a>');
+    var s=document.createElement('section'); s.className='spread wrap'+(i%2?' flip':''); s.id='room-'+r.id; s.setAttribute('aria-labelledby','h-'+r.id);
+    s.innerHTML='<div class="g"><div class="pics rv">'+
+      '<button class="main" type="button" data-open="'+i+'" aria-label="View '+r.name+'"><img class="a" src="'+I(r.imgs[0])+'" alt="" loading="lazy"><img class="b" src="'+I(r.imgs[1])+'" alt="" loading="lazy"><span class="view">View room</span></button>'+
+      '<div class="small"><img src="'+I(r.imgs[2])+'" alt="" loading="lazy"></div><p class="caption">'+r.cap+'</p></div>'+
+      '<div class="txt rv"><span class="tag">ROOM No. '+r.no+'</span><h2 id="h-'+r.id+'"><em>'+r.name+'</em></h2><p class="feel">'+r.feel+'</p>'+
+      '<dl class="specs"><dt>Type</dt><dd>'+r.type+'</dd><dt>Guests</dt><dd>Up to '+r.guests+'</dd><dt>Beds</dt><dd>'+r.beds+'</dd><dt>Size</dt><dd>'+r.size+'</dd>'+
+      '<dt>Amenities</dt><dd><span class="chips">'+r.amen.map(function(a){return '<span>'+a+'</span>'}).join('')+'</span></dd>'+
+      '<dt>Price</dt><dd>from '+fmt(r.rate)+' EGP / night <span class="ph-note">placeholder</span></dd></dl>'+
+      '<span class="avail">Availability confirmed on request</span><br>'+
+      '<label class="cmpck"><input type="checkbox" data-cmp="'+i+'"> Add to compare</label>'+
+      '<div class="acts"><button class="btn ghost" type="button" data-open="'+i+'">View room</button><button class="btn" type="button" data-open="'+i+'" data-book="1">Book now</button></div></div></div>';
+    col.appendChild(s);
+  });
+
+  /* search: dates and guests, filters by capacity only (no live availability) */
+  var SA='',SD='',SG=2;
+  (function(){ var t=new Date();t.setHours(12,0,0,0); var a=$('s-arr'),d=$('s-dep'); a.min=d.min=iso(t);
+    function setSG(v){SG=Math.max(1,Math.min(6,v)); $('s-go').textContent=SG+(SG===1?' guest':' guests'); $('s-gm').disabled=SG<=1; $('s-gp').disabled=SG>=6}
+    $('s-gm').addEventListener('click',function(){setSG(SG-1)}); $('s-gp').addEventListener('click',function(){setSG(SG+1)}); setSG(2);
+    [a,d].forEach(function(el){el.addEventListener('input',function(){$('se-'+el.id.slice(2)).textContent=''})});
+    $('sbar').addEventListener('submit',function(e){ e.preventDefault(); var ok=true;
+      if(!a.value){$('se-arr').textContent='Choose a check-in date.';ok=false}
+      if(!d.value){$('se-dep').textContent='Choose a check-out date.';ok=false} else if(a.value&&d.value<=a.value){$('se-dep').textContent='Check-out must be after check-in.';ok=false}
+      if(!ok)return; SA=a.value; SD=d.value;
+      var fits=0; ROOMS.forEach(function(r){var el=$('room-'+r.id),f=r.guests>=SG; el.classList.toggle('fit',f); el.classList.toggle('nofit',!f); if(f)fits++});
+      var n=Math.round((new Date(SD)-new Date(SA))/864e5);
+      $('sres').innerHTML=fits+(fits===1?' room fits ':' rooms fit ')+SG+(SG===1?' guest':' guests')+' for '+n+(n===1?' night':' nights')+'. Availability for these dates is confirmed by the house when you send a request. <a href="#collection">See the rooms ↓</a>';
+    });
+  })();
+
+  /* compare */
+  var picked=[];
+  function drawCompare(){
+    var sec=$('compare'), bar=$('cmpbar'); $('cmp-count').textContent=picked.length+(picked.length===1?' room selected':' rooms selected');
+    bar.hidden=picked.length<2; sec.hidden=picked.length<2; if(picked.length<2)return;
+    var rs=picked.map(function(i){return ROOMS[i]});
+    var row=function(label,f){return '<tr><th scope="row">'+label+'</th>'+rs.map(function(r){return '<td>'+f(r)+'</td>'}).join('')+'</tr>'};
+    $('cmp-table').innerHTML='<thead><tr><td></td>'+rs.map(function(r){return '<th scope="col"><em>'+r.name+'</em></th>'}).join('')+'</tr></thead><tbody>'+
+      row('',function(r){return '<img src="'+I(r.imgs[0])+'" alt="">'})+row('Type',function(r){return r.type})+row('Guests',function(r){return 'Up to '+r.guests})+
+      row('Beds',function(r){return r.beds})+row('Size',function(r){return r.size})+row('Amenities',function(r){return r.amen.join(', ')})+
+      row('Price',function(r){return 'from '+fmt(r.rate)+' EGP / night <span class="ph-note">placeholder</span>'})+
+      row('',function(r){return '<button class="btn" type="button" data-open="'+ROOMS.indexOf(r)+'" data-book="1">Book now</button>'})+'</tbody>';
+  }
+  document.addEventListener('change',function(e){ if(!e.target.matches('[data-cmp]'))return; var i=+e.target.dataset.cmp;
+    if(e.target.checked){ if(picked.indexOf(i)<0)picked.push(i) } else picked=picked.filter(function(x){return x!==i}); drawCompare() });
+  $('cmp-clear').addEventListener('click',function(){picked=[];document.querySelectorAll('[data-cmp]').forEach(function(c){c.checked=false});drawCompare()});
+
+  /* reveals, header, parallax */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  var bar=document.getElementById('bar'), hb=document.getElementById('heroBg');
+  addEventListener('scroll',function(){var y=scrollY; bar.classList.toggle('solid',y>innerHeight*.6); if(!reduce)hb.style.setProperty('--py',(y*.22)+'px')},{passive:true});
+  var menu=document.getElementById('menu'), nav=document.getElementById('nav');
+  menu.addEventListener('click',function(){var o=nav.classList.toggle('open');menu.setAttribute('aria-expanded',o?'true':'false')});
+
+  /* room entry */
+  var dlg=document.getElementById('entry'), hero=document.getElementById('ehero'), thumbs=document.getElementById('ethumbs'), cur=null, last=null, timer=null, slide=0;
+  function setSlide(k){ slide=k; hero.querySelectorAll('img').forEach(function(m,i){m.classList.toggle('on',i===k)}); [].forEach.call(thumbs.children,function(b,i){b.setAttribute('aria-current',i===k?'true':'false')}) }
+  function openRoom(i,book){
+    var r=ROOMS[i]; cur=r; last=document.activeElement;
+    hero.querySelectorAll('img').forEach(function(m){m.remove()}); thumbs.innerHTML='';
+    r.imgs.forEach(function(n,k){ var m=document.createElement('img'); m.src=I(n); m.alt=k?'':r.name+' at BETWEEN'; hero.insertBefore(m,hero.firstChild);
+      var b=document.createElement('button'); b.type='button'; b.innerHTML='<img src="'+I(n)+'" alt="">'; b.setAttribute('aria-label','Show photo '+(k+1)+' of '+r.imgs.length);
+      b.addEventListener('click',function(){setSlide(k);restart()}); thumbs.appendChild(b) });
+    var ims=[].slice.call(hero.querySelectorAll('img')).reverse(); ims.forEach(function(m){hero.insertBefore(m,hero.querySelector('.t'))});
+    setSlide(0);
+    $('e-tag').textContent='ROOM No. '+r.no+' · '+r.type.toUpperCase(); $('e-title').innerHTML='<em>'+r.name+'</em>';
+    $('e-feel').textContent=r.feel; $('e-desc').textContent=r.desc; $('e-cap').textContent='“'+r.cap+'”';
+    $('e-specs').innerHTML='<dt>Type</dt><dd>'+r.type+'</dd><dt>Guests</dt><dd>Up to '+r.guests+'</dd><dt>Beds</dt><dd>'+r.beds+'</dd><dt>Size</dt><dd>'+r.size+'</dd><dt>Amenities</dt><dd><span class="chips">'+r.amen.map(function(a){return '<span>'+a+'</span>'}).join('')+'</span></dd>';
+    renderCard(r);
+    dlg.showModal(); dlg.scrollTop=0; restart();
+    if(book){ setTimeout(function(){ $('ecard').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}); var a=$('b-arr'); if(a)a.focus({preventScroll:true}) },250) } else $('eclose').focus();
+  }
+  function restart(){ clearInterval(timer); if(!reduce)timer=setInterval(function(){setSlide((slide+1)%cur.imgs.length)},5000) }
+  $('eclose').addEventListener('click',function(){dlg.close()});
+  dlg.addEventListener('close',function(){clearInterval(timer); if(last)last.focus()});
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-open]'); if(b)openRoom(+b.dataset.open,!!b.dataset.book)});
+
+  /* booking request (no live availability; connect REQUEST_ENDPOINT later) */
+  var REQUEST_ENDPOINT=null;
+  function send(p){ if(!REQUEST_ENDPOINT)return Promise.resolve({preview:true}); return fetch(REQUEST_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).then(function(r){if(!r.ok)throw 0;return {preview:false}}) }
+  function renderCard(r){
+    var t=new Date(); t.setHours(12,0,0,0); var a=SA?new Date(SA+'T12:00'):new Date(t.getTime()+21*864e5); var d=SD?new Date(SD+'T12:00'):new Date(a.getTime()+3*864e5);
+    $('ecard').innerHTML='<h3>Stay in <em>'+r.name+'</em></h3>'+
+      '<div class="price"><span><b>'+fmt(r.rate)+' EGP</b> / night</span><small>placeholder rate</small></div>'+
+      '<form id="bf" novalidate><div class="fg">'+
+      '<div class="f"><label for="b-arr">Arrival</label><input type="date" id="b-arr" min="'+iso(t)+'" value="'+iso(a)+'"><span class="err" id="e-arr"></span></div>'+
+      '<div class="f"><label for="b-dep">Departure</label><input type="date" id="b-dep" min="'+iso(t)+'" value="'+iso(d)+'"><span class="err" id="e-dep"></span></div>'+
+      '<div class="f full"><label id="g-l">Guests</label><div class="step" role="group" aria-labelledby="g-l"><button type="button" id="g-m" aria-label="One guest fewer">−</button><output id="g-o" aria-live="polite"></output><button type="button" id="g-p" aria-label="One guest more">+</button></div></div>'+
+      '<div class="f"><label for="b-name">Name</label><input id="b-name" autocomplete="name"><span class="err" id="e-name"></span></div>'+
+      '<div class="f"><label for="b-mail">Email</label><input id="b-mail" type="email" autocomplete="email"><span class="err" id="e-mail"></span></div>'+
+      '<div class="f full"><label for="b-note">A note for the house</label><textarea id="b-note" placeholder="Arrival time, celebrations, anything we should know"></textarea></div>'+
+      '</div><div id="sum"></div>'+
+      '<button class="btn" type="submit" style="margin-top:18px;width:100%">Request this room</button>'+
+      '<p class="small">This is a booking request. Availability and the final rate are confirmed by the hotel before anything is charged.</p></form>';
+    var g=Math.min(SG,r.guests);
+    function setG(v){g=Math.max(1,Math.min(r.guests,v)); $('g-o').textContent=g+(g===1?' guest':' guests'); $('g-m').disabled=g<=1; $('g-p').disabled=g>=r.guests}
+    function nights(){var A=$('b-arr').value,D=$('b-dep').value; if(!A||!D)return 0; return Math.round((new Date(D+'T12:00')-new Date(A+'T12:00'))/864e5)}
+    function sum(){var n=nights(); $('sum').innerHTML=n>0?'<div class="sum"><span>'+n+(n===1?' night':' nights')+' × '+fmt(r.rate)+' EGP</span><span>'+fmt(n*r.rate)+' EGP</span></div><div class="sum"><span>Taxes and fees</span><span>Confirmed by the hotel</span></div><div class="sum" style="font-weight:500;border-top:1px solid var(--line);padding-top:10px"><span>Estimated total</span><span>'+fmt(n*r.rate)+' EGP <small>(placeholder)</small></span></div>':''}
+    $('g-m').addEventListener('click',function(){setG(g-1)}); $('g-p').addEventListener('click',function(){setG(g+1)}); setG(g); sum();
+    $('bf').addEventListener('input',function(e){var s=$('e-'+e.target.id.replace('b-',''));if(s)s.textContent='';sum()});
+    $('bf').addEventListener('submit',function(e){
+      e.preventDefault(); var ok=true;
+      function bad(id,m){$('e-'+id).textContent=m; if(ok)$('b-'+id).focus(); ok=false}
+      var A=$('b-arr').value, D=$('b-dep').value, n=nights(), nm=$('b-name').value.trim(), em=$('b-mail').value.trim();
+      if(!A)bad('arr','Choose the day you arrive.'); else if(A<$('b-arr').min)bad('arr','Choose a date from today onward.');
+      if(!D)bad('dep','Choose the day you leave.'); else if(n<1)bad('dep','Departure must be after arrival.');
+      if(!nm)bad('name','Tell us the name for the book.');
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em))bad('mail','Enter an email we can reply to.');
+      if(!ok)return;
+      var p={room:r.name,type:r.type,arrival:A,departure:D,nights:n,guests:g,name:nm,email:em,note:$('b-note').value.trim(),source:'between-rooms'};
+      send(p).then(function(res){
+        var f=function(s){return new Date(s+'T12:00').toLocaleDateString('en-GB',{day:'numeric',month:'long'})};
+        $('ecard').innerHTML='<div class="done" tabindex="-1" id="done"><span class="seal logo-symbol mask" style="display:block" aria-hidden="true"></span>'+
+          '<h4>'+nm.replace(/[<>&]/g,'')+', your request is with the house.</h4>'+
+          '<p style="margin-top:10px">'+r.name+' · '+f(A)+' to '+f(D)+' · '+g+(g===1?' guest':' guests')+'</p>'+
+          '<p style="margin-top:8px">This is not a confirmed booking yet. The Parlour will write to '+em.replace(/[<>&]/g,'')+' to confirm availability and the rate.</p>'+
+          (res.preview?'<p class="small">Preview: this request was not sent anywhere yet.</p>':'')+'</div>';
+        $('done').focus();
+      }).catch(function(){ $('bf').insertAdjacentHTML('beforeend','<p class="err">We could not send your request. Check your connection and try again.</p>') });
+    });
+  }
+  if(location.hash.indexOf('#room-')===0){var k=ROOMS.findIndex(function(r){return '#room-'+r.id===location.hash}); if(k>-1)setTimeout(function(){document.getElementById('room-'+ROOMS[k].id).scrollIntoView()},200)}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Experiences · BETWEEN Dahab</title><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="theme-color" content="#0F3853">
+<meta name="description" content="Beyond the stay: camel rides, diving, Saint Catherine hikes, mountain nights, desert safari and windsurfing, arranged by BETWEEN in Dahab.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Sansita+Swashed:wght@400;500;600&display=swap">
+<style>
+/* Layout concept: a travel journal laid open on the house desk. Six postcards from Dahab slide past sideways; opening one turns it into a full journal page with a request form. */
+:root{
+  --navy:#0F3853; --ivory:#F8F1E4; --coastal:#6D9EB7; --mustard:#E19B01;
+  --olive:#706A3C; --burgundy:#901726; --espresso:#382321;
+  --paper:#F3EAD8; --line:rgba(15,56,83,.22);
+  --display:"Sansita Swashed", Georgia, serif;
+  --body:"Outfit", "Helvetica Neue", Arial, sans-serif;
+  --gutter:max(20px, 4.5vw);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--ivory);color:var(--navy);font-family:var(--body);font-size:17px;line-height:1.65;font-weight:300;overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.02;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{padding-left:max(var(--gutter), env(safe-area-inset-left,0px));padding-right:max(var(--gutter), env(safe-area-inset-right,0px))}
+.eyebrow{font-size:12.5px;font-weight:500;letter-spacing:.32em;text-transform:uppercase}
+.hand{font-family:var(--display);font-weight:400}
+:focus-visible{outline:2px dashed var(--mustard);outline-offset:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;left:16px;top:-60px;z-index:200;background:var(--navy);color:var(--ivory);padding:10px 16px;text-decoration:none}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+.mask{background:currentColor;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.logo-symbol{--m:url(assets/logo/symbol.png);aspect-ratio:1}
+.logo-h{--m:url(assets/logo/horizontal.png);aspect-ratio:1300/359}
+.logo-v{--m:url(assets/logo/vertical.png);aspect-ratio:1000/793}
+body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:150;opacity:.08;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.15 0 0 0 0 0.1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1.2s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+
+/* header (same as the house) */
+.bar{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;align-items:center;gap:24px;
+  padding:calc(14px + env(safe-area-inset-top,0px)) max(var(--gutter), env(safe-area-inset-right,0px)) 14px max(var(--gutter), env(safe-area-inset-left,0px));
+  color:var(--ivory);transition:background .5s,color .5s,padding .4s}
+.bar.solid{background:rgba(248,241,228,.94);color:var(--navy);padding-top:calc(8px + env(safe-area-inset-top,0px));padding-bottom:8px;box-shadow:0 1px 0 var(--line)}
+.bar .brand .logo-h{width:150px;display:block}
+.bar nav{margin-left:auto}
+.bar nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+.bar nav a{text-decoration:none;font-size:13px;letter-spacing:.24em;text-transform:uppercase;padding:6px 0;border-bottom:1px solid transparent}
+.bar nav a:hover,.bar nav a[aria-current="page"]{border-bottom-color:currentColor}
+.menu{display:none;margin-left:auto;background:none;border:1px solid currentColor;color:inherit;font:inherit;font-size:12px;letter-spacing:.24em;text-transform:uppercase;padding:8px 14px;cursor:pointer}
+@media (max-width:1100px){.bar nav{display:none}.menu{display:block}.bar nav.open{display:block;position:absolute;top:100%;left:0;right:0;background:var(--ivory);color:var(--navy);padding:14px var(--gutter) 22px;box-shadow:0 12px 30px rgba(0,0,0,.15)}.bar nav.open ul{flex-direction:column;gap:6px}}
+
+/* hero */
+.hero{position:relative;min-height:min(100svh,1000px);display:grid;align-items:end;color:var(--ivory);overflow:hidden;isolation:isolate}
+.hero .bg{position:absolute;inset:-6% 0;z-index:-2;background:url(assets/img/exp/hero.webp) center 38%/cover;transform:translateY(var(--py,0px)) scale(1.06)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,56,83,.55),rgba(15,56,83,.05) 40%,rgba(15,56,83,.25) 65%,rgba(15,56,83,.85))}
+.hero .inner{padding-block:150px 70px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:40px;align-items:end}
+.hero h1{font-size:clamp(50px,8.6vw,138px);letter-spacing:-.01em}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em}
+.hero h1 .w span{display:inline-block;transform:translateY(105%);animation:rise 1.2s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i) * .12s + .2s)}
+.hero h1 .w:nth-child(n+4) span{color:#ffcf73}
+@keyframes rise{to{transform:none}}
+.hero .side{display:flex;flex-direction:column;gap:22px;max-width:360px;justify-self:end}
+.hero .side p{font-family:var(--display);font-size:24px;line-height:1.25}
+.cue{display:inline-flex;align-items:center;gap:14px;text-decoration:none;font-size:12.5px;letter-spacing:.3em;text-transform:uppercase}
+.cue .line{width:1.5px;height:54px;background:rgba(248,241,228,.35);position:relative;overflow:hidden}
+.cue .line::after{content:"";position:absolute;left:0;top:-40%;width:100%;height:40%;background:var(--ivory);animation:drip 2.2s ease-in-out infinite}
+@keyframes drip{to{top:100%}}
+@media (max-width:860px){.hero .inner{grid-template-columns:1fr}.hero .side{justify-self:start}}
+
+/* intro + filter */
+.intro{padding-block:110px 60px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end}
+.intro h2{font-size:clamp(38px,4.8vw,72px)}
+.intro h2 em{font-style:normal;color:var(--burgundy)}
+.intro p{max-width:48ch;color:var(--espresso)}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.filters button{font:inherit;font-size:12px;letter-spacing:.24em;text-transform:uppercase;padding:10px 16px;border:1.5px solid var(--navy);background:none;color:var(--navy);cursor:pointer;transition:background .3s,color .3s}
+.filters button[aria-pressed="true"]{background:var(--navy);color:var(--ivory)}
+@media (max-width:860px){.intro{grid-template-columns:1fr}}
+
+/* the gallery: six postcards */
+.gallery{position:relative;background:var(--espresso)}
+.gallery .vp{position:relative}
+.track{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:28px;padding-block:70px 90px}
+.xp{position:relative;display:flex;flex-direction:column;background:#fffaf0;color:var(--espresso);padding:14px 14px 26px;box-shadow:0 26px 50px rgba(0,0,0,.35);transform:rotate(var(--r,0deg));transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .5s}
+.xp:hover{transform:rotate(0deg) translateY(-8px)}
+.xp .ph{position:relative;aspect-ratio:4/5;overflow:hidden;cursor:pointer;border:0;padding:0;background:#222;width:100%}
+.xp .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1),opacity 1s}
+.xp .ph img.b{opacity:0}
+.xp:hover .ph img.a,.xp:focus-within .ph img.a{transform:scale(1.07)}
+.xp:hover .ph img.b,.xp:focus-within .ph img.b{opacity:1;transform:scale(1.04)}
+.xp .lab{position:absolute;left:14px;top:14px;background:var(--ivory);color:var(--navy);font-size:11px;font-weight:500;letter-spacing:.3em;padding:6px 10px}
+.xp .no{position:absolute;right:16px;top:10px;font-family:var(--display);font-size:46px;color:var(--ivory);text-shadow:0 2px 14px rgba(0,0,0,.4)}
+.xp .ill{position:absolute;right:14px;bottom:14px;width:60px;height:60px;color:var(--ivory);filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.xp .body{padding:20px 8px 0;display:flex;flex-direction:column;gap:12px;flex:1}
+.xp h3{font-size:clamp(30px,2.6vw,40px);color:var(--navy)}
+.xp .body p{font-size:15.5px;line-height:1.6}
+.xp .cta{margin-top:auto;align-self:flex-start;font:inherit;font-size:12px;letter-spacing:.24em;text-transform:uppercase;padding:13px 18px;border:1.5px solid var(--navy);background:var(--navy);color:var(--ivory);cursor:pointer;transition:background .3s,color .3s}
+.xp .cta:hover{background:transparent;color:var(--navy)}
+.xp.dim{opacity:.18;pointer-events:none}
+.gal-head{display:flex;justify-content:space-between;align-items:center;gap:20px;color:var(--ivory);padding-top:60px}
+.gal-head p{font-family:var(--display);font-size:22px;opacity:.85}
+.gal-nav{display:none;gap:8px}
+.gal-nav button{width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(248,241,228,.6);background:none;color:var(--ivory);font-size:18px;cursor:pointer}
+.gal-nav button:hover{background:rgba(248,241,228,.12)}
+/* horizontal scroll on wide screens */
+.gallery.h .vp{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.gallery.h .track{display:flex;gap:44px;width:max-content;padding-block:34px 40px;will-change:transform}
+.gallery.h .xp{width:min(30vw,440px);flex:none}
+.gallery.h .xp .ph{aspect-ratio:4/4.3}
+.gallery.h .gal-head{padding-top:84px}
+.gallery.h .gal-nav{display:flex}
+.progress{height:2px;background:rgba(248,241,228,.15);margin-inline:var(--gutter);position:relative;display:none}
+.gallery.h .progress{display:block}
+.progress i{position:absolute;left:0;top:0;bottom:0;background:#ffcf73;width:var(--p,0%)}
+
+/* journal overlay */
+dialog.journal{border:0;padding:0;margin:0;width:100vw;height:100dvh;max-width:none;max-height:none;background:var(--ivory);color:var(--navy);overflow:hidden}
+dialog.journal::backdrop{background:rgba(15,56,83,.7)}
+dialog.journal[open]{animation:open .7s cubic-bezier(.2,.7,.2,1)}
+@keyframes open{from{clip-path:inset(48% 0 48% 0)}to{clip-path:inset(0)}}
+.j{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);height:100%}
+.j .pics{position:relative;overflow:hidden;background:#111}
+.j .pics img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.1s ease,transform 6s ease}
+.j .pics img.on{opacity:1;transform:scale(1)}
+.j .pics .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent 30%,transparent 60%,rgba(0,0,0,.55))}
+.j .pics .top{position:absolute;left:24px;right:24px;top:calc(22px + env(safe-area-inset-top,0px));display:flex;justify-content:space-between;align-items:center;color:var(--ivory)}
+.j .pics .dots{display:flex;gap:8px}
+.j .pics .dots button{width:30px;height:4px;border:0;background:rgba(248,241,228,.4);cursor:pointer;padding:0}
+.j .pics .dots button[aria-current="true"]{background:var(--ivory)}
+.j .pics .bottom{position:absolute;left:24px;right:24px;bottom:24px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;color:var(--ivory)}
+.j .pics .bottom h2{font-size:clamp(38px,4.6vw,76px)}
+.j .pics .stepper{display:flex;gap:8px}
+.j .pics .stepper button{font:inherit;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;background:rgba(15,56,83,.6);color:var(--ivory);border:1px solid rgba(248,241,228,.5);padding:10px 12px;cursor:pointer;white-space:nowrap}
+.j .page{overflow:auto;padding:calc(30px + env(safe-area-inset-top,0px)) clamp(20px,4vw,60px) 50px;background:var(--paper);
+  background-image:repeating-linear-gradient(180deg,transparent 0 43px,rgba(15,56,83,.09) 43px 44px)}
+.j .close{position:sticky;top:0;float:right;font:inherit;font-size:12px;letter-spacing:.26em;text-transform:uppercase;border:1.5px solid var(--navy);background:var(--paper);color:var(--navy);padding:9px 14px;cursor:pointer;z-index:2}
+.j .page .lead{font-family:var(--display);font-size:clamp(22px,2vw,28px);line-height:1.3;margin-top:26px;clear:both}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 30px;margin-top:28px}
+.facts div{border-top:1.5px solid var(--navy);padding-top:10px;min-width:0}
+.facts h4{margin:0;font-size:11.5px;font-weight:500;letter-spacing:.26em;text-transform:uppercase}
+.facts p,.facts ul{font-size:15px;margin:6px 0 0;padding:0;list-style:none}
+.facts li::before{content:"· ";color:var(--burgundy)}
+.facts .full{grid-column:1/-1}
+.tbc{font-family:var(--display);color:var(--burgundy)}
+.req{margin-top:36px;background:#fffaf0;padding:26px clamp(18px,3vw,34px) 30px;box-shadow:0 18px 40px rgba(56,35,33,.12);position:relative}
+.req::before{content:"";position:absolute;left:50%;top:-12px;width:110px;height:24px;margin-left:-55px;background:rgba(225,155,1,.55);transform:rotate(-2deg)}
+.req h3{font-size:34px}
+.req .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;margin-top:18px}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.f.full{grid-column:1/-1}
+.f label{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+.f input,.f select,.f textarea{font:inherit;font-size:17px;color:var(--navy);background:transparent;border:0;border-bottom:1.5px solid var(--navy);padding:8px 2px;border-radius:0;width:100%;min-width:0}
+.f select{appearance:none;background:linear-gradient(45deg,transparent 50%,var(--navy) 50%) right 8px center/7px 7px no-repeat,linear-gradient(-45deg,transparent 50%,var(--navy) 50%) right 2px center/7px 7px no-repeat;padding-right:24px}
+.f textarea{min-height:84px;resize:vertical;border:1.5px solid var(--line);padding:10px}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--mustard);background:rgba(225,155,1,.06)}
+.err{color:var(--burgundy);font-size:13px;min-height:1.1em}
+.send{margin-top:22px;font:inherit;font-size:13px;letter-spacing:.26em;text-transform:uppercase;padding:16px 24px;border:1.5px solid var(--navy);background:var(--navy);color:var(--ivory);cursor:pointer}
+.send:hover{background:transparent;color:var(--navy)}
+.small{font-size:13px;opacity:.75;margin-top:14px}
+.done{text-align:center;padding:30px 10px}
+.done .stamp{width:120px;margin:0 auto;aspect-ratio:1026/1158;background:var(--burgundy);-webkit-mask:url(assets/icons/stamp_dahab.svg) center/contain no-repeat;mask:url(assets/icons/stamp_dahab.svg) center/contain no-repeat;transform:rotate(-8deg);animation:stamp .7s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes stamp{from{opacity:0;transform:scale(1.8) rotate(-30deg)}to{opacity:1;transform:scale(1) rotate(-8deg)}}
+.done h3{font-size:30px;margin-top:20px;max-width:20ch;margin-inline:auto}
+.done dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;text-align:left;max-width:420px;margin:22px auto 0;font-size:14.5px}
+.done dt{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;padding-top:3px}
+.done dd{margin:0}
+@media (max-width:900px){
+  dialog.journal{overflow:auto}
+  .j{display:block;height:auto}
+  .j .pics{height:58svh}
+  .j .page{overflow:visible}
+  .j .close{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:14px}
+}
+@media (max-width:560px){.facts,.req .grid{grid-template-columns:1fr}}
+
+/* closing */
+.closing{position:relative;min-height:min(92svh,860px);display:grid;place-items:center;text-align:center;color:var(--ivory);overflow:hidden;isolation:isolate}
+.closing .bg{position:absolute;inset:-8% 0;z-index:-2;background:url(assets/img/hero.webp) center/cover;transform:translateY(var(--py,0px))}
+.closing::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,56,83,.35),rgba(15,56,83,.6))}
+.closing .in{max-width:900px;padding-block:120px;display:flex;flex-direction:column;align-items:center;gap:26px}
+.closing h2{font-size:clamp(44px,7vw,112px)}
+.closing p{font-family:var(--display);font-size:clamp(20px,2vw,26px);max-width:34ch}
+.btn-l{display:inline-block;text-decoration:none;font-size:13px;letter-spacing:.28em;text-transform:uppercase;padding:16px 26px;border:1.5px solid var(--ivory);color:var(--ivory);transition:background .3s,color .3s}
+.btn-l:hover{background:var(--ivory);color:var(--navy)}
+footer{background:var(--navy);color:var(--ivory);padding-block:50px}
+footer .row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:13px;opacity:.85}
+footer .logo-h{width:180px;display:block}
+
+/* sound control (muted by default) */
+.snd{position:fixed;z-index:95;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:6px;background:rgba(15,56,83,.92);color:var(--ivory);padding:6px 8px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.snd button{display:inline-flex;align-items:center;gap:10px;background:none;border:0;color:inherit;font:inherit;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;padding:8px 10px;border-radius:999px;cursor:pointer}
+.snd button:hover{background:rgba(248,241,228,.12)}
+.snd .dot{width:8px;height:8px;border-radius:50%;background:rgba(248,241,228,.35)}
+.snd.on .dot{background:#ffcf73;box-shadow:0 0 0 3px rgba(255,207,115,.25)}
+.snd input{width:80px;accent-color:var(--mustard)}
+.snd .now{font-size:12.5px;opacity:.8;padding-right:8px;white-space:nowrap}
+.snd:not(.on) .now{display:none}
+@media (max-width:640px){.snd .now{display:none!important}.snd input{width:60px}}
+
+html.js .rv{transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.2,.7,.2,1)}
+html.js .rv:not(.in){opacity:.25;transform:translateY(18px)}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero h1 .w span{transform:none}
+  html.js .rv:not(.in){opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#gallery">Skip to the experiences</a>
+
+<header class="bar" id="bar">
+  <a class="brand" href="index.html" aria-label="BETWEEN, back to the house"><span class="logo-h mask"></span></a>
+  <button class="menu" type="button" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav aria-label="Main" id="nav">
+    <ul>
+      <li><a href="index.html#house">The House</a></li>
+      <li><a href="index.html#rooms">The Spaces</a></li>
+      <li><a href="rooms.html">Rooms</a></li>
+      <li><a href="experiences.html" aria-current="page">Experiences</a></li>
+      <li><a href="camera.html">The Camera</a></li>
+      <li><a href="index.html#archive">Archive</a></li>
+      <li><a href="index.html#dahab">Dahab</a></li>
+      <li><a href="index.html#stay">Stay</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="snd" id="snd" role="group" aria-label="Sound">
+  <button type="button" id="sndPlay" aria-pressed="false" title="Ambient sound, generated live in your browser"><span class="dot" aria-hidden="true"></span><span class="lbl">Sound off</span></button>
+  <label class="sr" for="sndVol">Volume</label><input type="range" id="sndVol" min="0" max="100" value="50">
+  <span class="now" id="sndNow" aria-live="polite"></span>
+</div>
+
+<main>
+  <section class="hero" id="top" aria-labelledby="hero-h">
+    <div class="bg" id="heroBg" role="img" aria-label="The desert coast of Sinai above and the Red Sea below, a diver descending into blue water"></div>
+    <div class="inner wrap">
+      <h1 id="hero-h" aria-label="There is more to discover."><span class="w"><span style="--i:0">There</span></span> <span class="w"><span style="--i:1">is</span></span> <span class="w"><span style="--i:2">more</span></span><br><span class="w"><span style="--i:3">to</span></span> <span class="w"><span style="--i:4">discover.</span></span></h1>
+      <div class="side">
+        <p>From the stillness of the sea to the silence of the mountains, discover another side of Dahab.</p>
+        <a class="cue" href="#intro"><span class="line" aria-hidden="true"></span>Beyond the stay</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro wrap rv" id="intro" aria-labelledby="intro-h">
+    <div>
+      <p class="eyebrow">Experiences · Beyond the stay</p>
+      <h2 id="intro-h" style="margin-top:20px">Six ways to leave the house, and <em>come back with a story.</em></h2>
+    </div>
+    <div>
+      <p>The sea, the desert and the mountains are all within reach of the front door. Tell us what you would like to do, and the Parlour will arrange it with people we know and trust.</p>
+      <div class="filters" role="group" aria-label="Show experiences by landscape">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="SEA" aria-pressed="false">Sea</button>
+        <button type="button" data-f="DESERT" aria-pressed="false">Desert</button>
+        <button type="button" data-f="MOUNTAINS" aria-pressed="false">Mountains</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery" aria-labelledby="gal-h">
+    <div class="vp">
+      <div class="gal-head wrap">
+        <h2 id="gal-h" class="sr">The experiences</h2>
+        <p>Open a postcard to read more and request it.</p>
+        <div class="gal-nav"><button type="button" id="gprev" aria-label="Previous experience">←</button><button type="button" id="gnext" aria-label="Next experience">→</button></div>
+      </div>
+      <div class="track wrap" id="track"></div>
+      <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+    </div>
+  </section>
+
+  <section class="closing" aria-labelledby="close-h">
+    <div class="bg" id="closeBg" role="img" aria-label="The Sinai mountains reflected in the still Red Sea at Dahab"></div>
+    <div class="in wrap rv">
+      <span class="logo-symbol mask" style="width:76px" aria-hidden="true"></span>
+      <h2 id="close-h">Make a memory that stays.</h2>
+      <p>Your stay is only part of the story. Let Dahab take you somewhere unexpected.</p>
+      <a class="btn-l" href="index.html">Explore BETWEEN</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span class="logo-h mask" role="img" aria-label="BETWEEN"></span>
+    <span>Dahab, South Sinai · Experiences are arranged with local providers and confirmed by the hotel.</span>
+  </div>
+</footer>
+
+<dialog class="journal" id="journal" aria-labelledby="j-title">
+  <div class="j">
+    <div class="pics" id="jpics">
+      <div class="shade"></div>
+      <div class="top"><span class="eyebrow" id="j-lab"></span><div class="dots" id="jdots"></div></div>
+      <div class="bottom"><h2 id="j-title"></h2><div class="stepper"><button type="button" id="jprev">← Prev</button><button type="button" id="jnext">Next →</button></div></div>
+    </div>
+    <div class="page" id="jpage">
+      <button type="button" class="close" id="jclose">Close</button>
+      <p class="eyebrow" id="j-kicker"></p>
+      <p class="lead" id="j-lead"></p>
+      <div class="facts" id="j-facts"></div>
+      <div class="req" id="req"></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  var root=document.documentElement; root.classList.add('js');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- the six experiences ---------- */
+  var XP=[
+    {id:'camel',no:'01',lab:'DESERT',title:'Camel Rides',cta:'Book this experience',ill:'camel',scene:'desert',
+     desc:'Explore the coastline and surrounding desert on a traditional camel ride. Experience Dahab at a slower pace.',
+     imgs:['camel-1','camel-2','camel-3'],
+     expect:'A slow ride along the shore and into the desert behind Dahab, led by a Bedouin guide who knows every path.',
+     where:'Dahab coastline and the desert behind it. Meeting point shared when your request is confirmed.',
+     incl:['A Bedouin guide and camel for each rider','Hotel pick-up can be arranged on request'],
+     notes:['Long sleeves, a hat and closed shoes are best','Tell us about any back or mobility concerns before booking']},
+    {id:'dive',no:'02',lab:'SEA',title:'Scuba Diving',cta:'Book a dive',ill:'fish_school',scene:'sea',
+     desc:"Discover the underwater world of the Red Sea, explore colorful coral reefs, and experience Dahab's famous diving locations.",
+     imgs:['dive-1','dive-2','dive-3'],
+     expect:'Shore dives on the reefs along the coast, with a licensed dive centre matched to your level, from first try-dive to experienced.',
+     where:'Dahab dive sites, chosen with the dive centre on the day according to conditions and your experience.',
+     incl:['A licensed dive instructor or guide','Equipment provided by the dive centre'],
+     notes:['Bring your certification card if you have one','A short medical questionnaire is required before diving','No flying within 24 hours after your last dive']},
+    {id:'hike',no:'03',lab:'MOUNTAINS',title:'Hiking in Saint Catherine',cta:'Book a hike',ill:'mountains',scene:'mountains',
+     desc:'Discover the dramatic landscapes of Sinai through guided mountain hikes. Experience the beauty of Saint Catherine and its surrounding mountains.',
+     imgs:['hike-1','hike-2'],
+     expect:'A guided walk into the high mountains around Saint Catherine, with Bedouin guides, wide views and very quiet trails.',
+     where:'Saint Catherine, in the South Sinai mountains. Transport from Dahab is arranged with your request.',
+     incl:['A local Bedouin guide','Return transport from BETWEEN can be arranged'],
+     notes:['Good walking shoes and warm layers: the mountains are cold at night and early morning','A reasonable level of fitness is needed','Bring your passport or ID for checkpoints']},
+    {id:'night',no:'04',lab:'MOUNTAINS',title:'Mountain Nights',cta:'Explore night experiences',ill:'moon',scene:'night',
+     desc:'Experience a different kind of night in the Sinai mountains. Discover atmospheric mountain gatherings, music, stargazing, and special night events.',
+     imgs:['night-1','night-2','night-3'],
+     expect:'An evening in the mountains: a fire, music, Bedouin tea and a sky with more stars than you remember. Events change through the season.',
+     where:'Mountain camps in the hills around Dahab. The exact location depends on the evening and is shared on confirmation.',
+     incl:['Transport to and from the camp can be arranged','We will tell you what is on during your stay'],
+     notes:['Bring a warm layer, even in summer','Some events are seasonal: tell us your dates and we will suggest what fits']},
+    {id:'safari',no:'05',lab:'DESERT',title:'Desert Safari',cta:'Book your safari',ill:'tent',scene:'desert',
+     desc:'Leave the coastline behind and explore the Sinai desert through exciting off-road adventures, mountain landscapes, and authentic Bedouin experiences.',
+     imgs:['safari-1','safari-2','safari-3'],
+     expect:'An off-road ride into the desert valleys and canyons behind Dahab, with stops for views and a Bedouin tea break.',
+     where:'The desert and wadis inland from Dahab. Route agreed with the provider when we confirm.',
+     incl:['An experienced local guide','Safety briefing before setting off'],
+     notes:['A scarf and sunglasses for the dust','Driving rules and age limits depend on the vehicle: we will confirm them with you']},
+    {id:'wind',no:'06',lab:'SEA',title:'Windsurfing',cta:'Book a session',ill:'windsurf',scene:'wind',
+     desc:"Feel the wind, move with the water, and discover Dahab's famous windsurfing conditions with an unforgettable experience on the Red Sea.",
+     imgs:['wind-1','wind-2','wind-3'],
+     expect:"A session on the water with a windsurf school in Dahab's lagoon, for complete beginners or riders who already know the wind.",
+     where:'The lagoon and bay at Dahab, depending on the wind that day.',
+     incl:['An instructor from a local windsurf centre','Board and sail provided by the centre'],
+     notes:['You need to be comfortable swimming','The wind decides: sessions may move to another day']}
+  ];
+  var IMG=function(n){return 'assets/img/exp/'+n+'.webp'};
+
+  /* ---------- gallery ---------- */
+  var track=document.getElementById('track');
+  XP.forEach(function(x,i){
+    var a=document.createElement('article'); a.className='xp'; a.dataset.lab=x.lab; a.style.setProperty('--r',(i%2?1.2:-1.2)+'deg');
+    a.innerHTML='<button class="ph" type="button" data-open="'+i+'" aria-label="Open '+x.title+'">'+
+      '<img class="a" src="'+IMG(x.imgs[0])+'" alt="" loading="lazy"><img class="b" src="'+IMG(x.imgs[1])+'" alt="" loading="lazy">'+
+      '<span class="lab">'+x.lab+'</span><span class="no">'+x.no+'</span><span class="ill mask" style="--m:url(assets/icons/'+x.ill+'.svg)" aria-hidden="true"></span></button>'+
+      '<div class="body"><h3>'+x.title+'</h3><p>'+x.desc+'</p><button class="cta" type="button" data-open="'+i+'">'+x.cta+'</button></div>';
+    track.appendChild(a);
+  });
+  var cards=[].slice.call(track.children);
+
+  /* filter by landscape */
+  var fbtn=[].slice.call(document.querySelectorAll('.filters button'));
+  fbtn.forEach(function(b){b.addEventListener('click',function(){
+    fbtn.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    cards.forEach(function(c){c.classList.toggle('dim',b.dataset.f!=='all'&&c.dataset.lab!==b.dataset.f)});
+    var first=cards.filter(function(c){return !c.classList.contains('dim')})[0]; if(first)goCard(cards.indexOf(first));
+  })});
+
+  /* horizontal scrolling gallery on wide screens */
+  var gal=document.getElementById('gallery'), prog=document.getElementById('prog'), cur=0;
+  function horiz(){return innerWidth>900&&!reduce}
+  function maxX(){return Math.max(0,track.scrollWidth-innerWidth)}
+  function layout(){ if(horiz()){gal.classList.add('h'); gal.style.height=(innerHeight+maxX())+'px'} else {gal.classList.remove('h'); gal.style.height=''; track.style.transform=''} onScroll() }
+  function onScroll(){
+    if(gal.classList.contains('h')){ var r=gal.getBoundingClientRect(), span=gal.offsetHeight-innerHeight, p=Math.min(1,Math.max(0,-r.top/span));
+      track.style.transform='translate3d('+(-p*maxX())+'px,0,0)'; prog.style.setProperty('--p',(p*100)+'%'); cur=Math.round(p*(cards.length-1)) }
+    var y=scrollY; document.getElementById('heroBg').style.setProperty('--py',(y*.25)+'px');
+    var cb=document.getElementById('closeBg'), cr=cb.parentNode.getBoundingClientRect(); cb.style.setProperty('--py',(cr.top*-.12)+'px');
+    bar.classList.toggle('solid',y>innerHeight*.6);
+    if(SND)SND.setScene(sceneNow());
+  }
+  function goCard(k){ k=Math.max(0,Math.min(cards.length-1,k));
+    if(gal.classList.contains('h')){var top=scrollY+gal.getBoundingClientRect().top, span=gal.offsetHeight-innerHeight; scrollTo({top:top+span*k/(cards.length-1)+2,behavior:reduce?'auto':'smooth'})}
+    else cards[k].scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'}) }
+  document.getElementById('gprev').addEventListener('click',function(){goCard(cur-1)});
+  document.getElementById('gnext').addEventListener('click',function(){goCard(cur+1)});
+  var bar=document.getElementById('bar');
+  addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',layout);
+
+  /* reveals */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.2});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+  /* mobile menu */
+  var menu=document.getElementById('menu'), nav=document.getElementById('nav');
+  menu.addEventListener('click',function(){var o=nav.classList.toggle('open');menu.setAttribute('aria-expanded',o?'true':'false')});
+
+  /* ---------- the journal (detail view) ---------- */
+  var dlg=document.getElementById('journal'), jpics=document.getElementById('jpics'), jdots=document.getElementById('jdots'), open=-1, slide=0, timer=null, lastFocus=null;
+  function el(id){return document.getElementById(id)}
+  function show(i){
+    open=(i+XP.length)%XP.length; var x=XP[open];
+    jpics.querySelectorAll('img').forEach(function(m){m.remove()}); jdots.innerHTML='';
+    x.imgs.forEach(function(n,k){ var m=document.createElement('img'); m.src=IMG(n); m.alt=k?'':x.title+' in Dahab'; if(k===0)m.className='on'; jpics.insertBefore(m,jpics.querySelector('.shade'));
+      var d=document.createElement('button'); d.type='button'; d.setAttribute('aria-label','Photo '+(k+1)+' of '+x.imgs.length); d.addEventListener('click',function(){setSlide(k);restart()}); jdots.appendChild(d) });
+    slide=0; setSlide(0);
+    el('j-lab').textContent=x.no+' · '+x.lab; el('j-title').textContent=x.title; el('j-kicker').textContent='From the travel journal · '+x.lab.toLowerCase();
+    el('j-lead').textContent=x.desc;
+    el('j-facts').innerHTML=
+      '<div class="full"><h4>What to expect</h4><p>'+x.expect+'</p></div>'+
+      '<div><h4>Location</h4><p>'+x.where+'</p></div>'+
+      '<div><h4>Duration</h4><p class="tbc">Confirmed by the hotel with your request</p></div>'+
+      '<div><h4>What\'s included</h4><ul>'+x.incl.map(function(t){return '<li>'+t+'</li>'}).join('')+'</ul><p class="small">Final details are confirmed by the provider.</p></div>'+
+      '<div><h4>Good to know</h4><ul>'+x.notes.map(function(t){return '<li>'+t+'</li>'}).join('')+'</ul></div>';
+    renderForm(x);
+    el('jpage').scrollTop=0;
+    if(SND)SND.setScene(x.scene);
+  }
+  function setSlide(k){ slide=k; var ims=jpics.querySelectorAll('img'); ims.forEach(function(m,i){m.classList.toggle('on',i===k)}); [].forEach.call(jdots.children,function(d,i){d.setAttribute('aria-current',i===k?'true':'false')}) }
+  function restart(){ clearInterval(timer); if(!reduce)timer=setInterval(function(){var n=jpics.querySelectorAll('img').length; setSlide((slide+1)%n)},5200) }
+  function openJ(i){ lastFocus=document.activeElement; show(i); dlg.showModal(); restart(); el('jclose').focus() }
+  function closeJ(){ dlg.close() }
+  dlg.addEventListener('close',function(){ clearInterval(timer); if(SND)SND.setScene(sceneNow()); if(lastFocus)lastFocus.focus() });
+  el('jclose').addEventListener('click',closeJ);
+  el('jprev').addEventListener('click',function(){show(open-1);restart()});
+  el('jnext').addEventListener('click',function(){show(open+1);restart()});
+  dlg.addEventListener('keydown',function(e){ if(e.target.matches('input,textarea,select'))return; if(e.key==='ArrowRight'){show(open+1);restart()} if(e.key==='ArrowLeft'){show(open-1);restart()} });
+  track.addEventListener('click',function(e){var b=e.target.closest('[data-open]'); if(b)openJ(+b.dataset.open)});
+
+  /* ---------- the booking request ---------- */
+  /* To connect a real channel later, set REQUEST_ENDPOINT to a form/booking URL or replace sendRequest(). */
+  var REQUEST_ENDPOINT=null;
+  function sendRequest(payload){
+    if(!REQUEST_ENDPOINT)return Promise.resolve({ok:true,preview:true});
+    return fetch(REQUEST_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(function(r){return {ok:r.ok,preview:false}});
+  }
+  function iso(d){return d.toISOString().slice(0,10)}
+  function renderForm(x){
+    var t=new Date(); t.setDate(t.getDate()+1);
+    el('req').innerHTML='<h3>Request this experience</h3><p class="small" style="margin-top:6px">No payment now. We reply to confirm timing, details and price.</p>'+
+      '<form id="rf" novalidate><div class="grid">'+
+      '<div class="f"><label for="rn">Your name</label><input id="rn" autocomplete="name" required><span class="err" id="e-rn"></span></div>'+
+      '<div class="f"><label for="re">Email</label><input id="re" type="email" autocomplete="email" required><span class="err" id="e-re"></span></div>'+
+      '<div class="f"><label for="rp">Phone / WhatsApp</label><input id="rp" type="tel" autocomplete="tel" placeholder="+20 …" required><span class="err" id="e-rp"></span></div>'+
+      '<div class="f"><label for="ra">Experience</label><select id="ra">'+XP.map(function(o,i){return '<option value="'+o.id+'"'+(o===x?' selected':'')+'>'+o.title+'</option>'}).join('')+'</select><span class="err"></span></div>'+
+      '<div class="f"><label for="rd">Preferred date</label><input id="rd" type="date" min="'+iso(t)+'" required><span class="err" id="e-rd"></span></div>'+
+      '<div class="f"><label for="rq">Participants</label><input id="rq" type="number" min="1" max="20" value="2" inputmode="numeric"><span class="err" id="e-rq"></span></div>'+
+      '<div class="f full"><label for="rt">Notes</label><textarea id="rt" placeholder="Experience level, ages, anything we should know"></textarea></div>'+
+      '</div><button class="send" type="submit">Request your experience</button>'+
+      '<p class="small">This is a request, not a confirmed booking. Nothing is charged.</p></form>';
+    var f=el('rf');
+    f.addEventListener('input',function(e){var s=el('e-'+e.target.id); if(s)s.textContent=''});
+    f.addEventListener('submit',function(e){
+      e.preventDefault(); var ok=true;
+      function bad(id,msg){el('e-'+id).textContent=msg; if(ok)el(id).focus(); ok=false}
+      var n=el('rn').value.trim(), em=el('re').value.trim(), ph=el('rp').value.trim(), d=el('rd').value, q=+el('rq').value;
+      if(!n)bad('rn','Tell us your name.');
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em))bad('re','Enter an email we can reply to.');
+      if(ph.replace(/\D/g,'').length<7)bad('rp','Enter a phone or WhatsApp number with country code.');
+      if(!d)bad('rd','Choose a preferred date.'); else if(d<el('rd').min)bad('rd','Choose a date from tomorrow onward.');
+      if(!(q>=1&&q<=20))bad('rq','Between 1 and 20 people.');
+      if(!ok)return;
+      var act=XP.filter(function(o){return o.id===el('ra').value})[0];
+      var payload={name:n,email:em,phone:ph,activity:act.title,date:d,participants:q,notes:el('rt').value.trim(),source:'between-experiences'};
+      sendRequest(payload).then(function(r){
+        var fmt=new Date(d+'T12:00').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});
+        el('req').innerHTML='<div class="done" tabindex="-1" id="done"><div class="stamp" aria-hidden="true"></div>'+
+          '<h3>Your next Dahab memory is one step closer.</h3><p style="margin-top:10px">Our team will be in touch to confirm your experience.</p>'+
+          '<dl><dt>Experience</dt><dd>'+act.title+'</dd><dt>Preferred date</dt><dd>'+fmt+'</dd><dt>People</dt><dd>'+q+'</dd><dt>We will reply to</dt><dd>'+em.replace(/[<>&]/g,'')+'</dd></dl>'+
+          (r.preview?'<p class="small">Preview: this request was not sent anywhere yet.</p>':'')+'</div>';
+        el('done').focus();
+      }).catch(function(){ el('req').insertAdjacentHTML('beforeend','<p class="err">We could not send your request. Check your connection and try again.</p>') });
+    });
+  }
+
+  /* ---------- ambient sound: muted by default, starts only on a click ---------- */
+  var SND=(function(){
+    var KEY='between-sound', pref={on:false,vol:.5}; try{var o=JSON.parse(sessionStorage.getItem(KEY)||'{}'); if(typeof o.vol==='number')pref.vol=o.vol}catch(e){}
+    function save(){try{var o=JSON.parse(sessionStorage.getItem(KEY)||'{}');o.vol=pref.vol;o.on=pref.on;sessionStorage.setItem(KEY,JSON.stringify(o))}catch(e){}}
+    var ctx,master,L={},scene='sea',playing=false,next={};
+    var MIX={sea:{waves:.6,wind:.15,birds:.3},desert:{wind:.55,waves:.1},mountains:{wind:.45,birds:.12},night:{wind:.2,fire:.7,crickets:.4},wind:{wind:.75,waves:.55}};
+    var LAB={sea:'Red Sea waves',desert:'Desert wind',mountains:'Mountain air',night:'A fire under the stars',wind:'Wind over the lagoon'};
+    function rnd(a,b){return a+Math.random()*(b-a)}
+    function buf(sec,f){var b=ctx.createBuffer(1,ctx.sampleRate*sec,ctx.sampleRate);f(b.getChannelData(0));return b}
+    function loop(b,dest){var s=ctx.createBufferSource();s.buffer=b;s.loop=true;s.connect(dest);s.start(0,rnd(0,b.duration))}
+    function layer(n){var g=ctx.createGain();g.gain.value=0;g.connect(master);L[n]=g;return g}
+    function lfo(f,d,t){var o=ctx.createOscillator();o.frequency.value=f;var g=ctx.createGain();g.gain.value=d;o.connect(g).connect(t);o.start()}
+    function build(){
+      ctx=new(window.AudioContext||window.webkitAudioContext)(); var c=ctx.createDynamicsCompressor(); c.connect(ctx.destination); master=ctx.createGain(); master.gain.value=0; master.connect(c);
+      var white=buf(6,function(d){for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1});
+      var brown=buf(6,function(d){var l=0;for(var i=0;i<d.length;i++){l=(l+.02*(Math.random()*2-1))/1.02;d[i]=l*3.2}});
+      var W=layer('waves');[.085,.061].forEach(function(f){var lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=650;var a=ctx.createGain();a.gain.value=.38;loop(brown,lp);lp.connect(a).connect(W);lfo(f,.34,a.gain)});
+      var Wi=layer('wind'),bp=ctx.createBiquadFilter();bp.type='bandpass';bp.frequency.value=480;bp.Q.value=.9;var wa=ctx.createGain();wa.gain.value=.28;loop(white,bp);bp.connect(wa).connect(Wi);lfo(.043,240,bp.frequency);lfo(.057,.2,wa.gain);
+      var F=layer('fire'),fl=ctx.createBiquadFilter();fl.type='lowpass';fl.frequency.value=500;var fa=ctx.createGain();fa.gain.value=.25;loop(brown,fl);fl.connect(fa).connect(F);
+      var crk=buf(4,function(d){for(var i=0;i<d.length;i++)d[i]=Math.random()<.0009?(Math.random()*2-1)*.9:0});var cf=ctx.createBiquadFilter();cf.type='bandpass';cf.frequency.value=1800;loop(crk,cf);cf.connect(F);
+      layer('birds');layer('crickets');
+    }
+    function env(g,t,p,a,d){g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(p,t+a);g.gain.exponentialRampToValueAtTime(.0001,t+a+d)}
+    function bird(){var t=ctx.currentTime+.05;for(var k=0;k<3;k++){var o=ctx.createOscillator(),g=ctx.createGain(),s=t+k*.14,f=rnd(2600,3400);o.frequency.setValueAtTime(f,s);o.frequency.exponentialRampToValueAtTime(f*1.25,s+.07);env(g,s,.03,.01,.09);o.connect(g).connect(L.birds);o.start(s);o.stop(s+.2)}}
+    function cricket(){var t=ctx.currentTime+.05;for(var k=0;k<6;k++){var o=ctx.createOscillator(),g=ctx.createGain(),s=t+k*.06;o.frequency.value=4400;env(g,s,.012,.004,.03);o.connect(g).connect(L.crickets);o.start(s);o.stop(s+.06)}}
+    var EV={birds:[bird,5,12],crickets:[cricket,.8,2.2]};
+    function pump(){if(!playing)return;var now=ctx.currentTime,m=MIX[scene]||{};Object.keys(EV).forEach(function(k){if(!(m[k]>0))return;if(!next[k])next[k]=now+rnd(.3,1.5);if(now>=next[k]){EV[k][0]();next[k]=now+rnd(EV[k][1],EV[k][2])}})}
+    function mix(){if(!ctx)return;var m=MIX[scene]||{};Object.keys(L).forEach(function(k){L[k].gain.setTargetAtTime(m[k]||0,ctx.currentTime,1.1)})}
+    var box=document.getElementById('snd'),btn=document.getElementById('sndPlay'),vol=document.getElementById('sndVol'),now=document.getElementById('sndNow');
+    function render(){box.classList.toggle('on',playing);btn.setAttribute('aria-pressed',playing?'true':'false');btn.querySelector('.lbl').textContent=playing?'Sound on':'Sound off';btn.setAttribute('aria-label',playing?'Turn ambient sound off':'Turn ambient sound on');now.textContent=playing?LAB[scene]:'';vol.value=Math.round(pref.vol*100)}
+    function start(){try{if(!ctx){build();setInterval(pump,250)}ctx.resume();playing=true;pref.on=true;save();mix();master.gain.setTargetAtTime(pref.vol*.9,ctx.currentTime,.3);render()}catch(e){btn.querySelector('.lbl').textContent='Sound unavailable'}}
+    function stop(){playing=false;pref.on=false;save();if(master)master.gain.setTargetAtTime(0,ctx.currentTime,.05);setTimeout(function(){if(!playing&&ctx)ctx.suspend()},400);render()}
+    btn.addEventListener('click',function(){playing?stop():start()});
+    vol.addEventListener('input',function(){pref.vol=vol.value/100;save();if(playing)master.gain.setTargetAtTime(pref.vol*.9,ctx.currentTime,.2)});
+    addEventListener('keydown',function(e){if((e.key==='m'||e.key==='M')&&!/input|textarea|select/i.test(e.target.tagName)&&playing)stop()});
+    document.addEventListener('visibilitychange',function(){if(!ctx)return;if(document.hidden)ctx.suspend();else if(playing)ctx.resume()});
+    render();
+    return {setScene:function(s){if(!s||s===scene)return;scene=s;next={};mix();render()}};
+  })();
+  function sceneNow(){ if(dlg.open&&open>-1)return XP[open].scene;
+    var g=gal.getBoundingClientRect(); if(g.top<innerHeight/2&&g.bottom>innerHeight/2){ var k=gal.classList.contains('h')?cur:cards.findIndex(function(c){var r=c.getBoundingClientRect();return r.top<innerHeight/2&&r.bottom>innerHeight/2}); if(k>-1)return XP[k].scene }
+    return 'sea' }
+
+  layout();
+  if(location.hash&&location.hash.length>1){var k=XP.findIndex(function(x){return '#'+x.id===location.hash}); if(k>-1)setTimeout(function(){openJ(k)},400)}
+})();
+</script>
+</body>
+</html>
